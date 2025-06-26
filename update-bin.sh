@@ -33,6 +33,8 @@ update_arch() {
 		mv "${crate}/${file}.template" "${crate}/${file}"
 	fi
 
+	echo "$crate/$file"
+
         sed -i~ -e "
             s/@@CRATE_NAME@@/$crate/
             s/@@CRATE_VERSION@@/$crate_version/
