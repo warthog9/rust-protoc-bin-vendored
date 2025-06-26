@@ -28,6 +28,11 @@ update_arch() {
     generated="@""generated"
 
     for file in Cargo.toml src/lib.rs; do
+	if [[ "${file}" == "Cargo.toml" ]]
+	then
+		mv "${crate}/${file}.template" "${crate}/${file}"
+	fi
+
         sed -i~ -e "
             s/@@CRATE_NAME@@/$crate/
             s/@@CRATE_VERSION@@/$crate_version/
